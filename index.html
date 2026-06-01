@@ -116,10 +116,10 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
 .toggle-label{flex:1;}
 .toggle-label-title{font-size:13px;color:var(--blue-text);font-weight:500;}
 .toggle-label-sub{font-size:11px;color:var(--muted);}
-.toggle{position:relative;width:42px;height:24px;flex-shrink:0;}
+.toggle{position:relative;display:inline-block;width:42px;height:24px;flex-shrink:0;}
 .toggle input{opacity:0;width:0;height:0;position:absolute;}
 .toggle-slider{position:absolute;inset:0;background:var(--border);border-radius:12px;cursor:pointer;transition:.2s;}
-.toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;}
+.toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
 .toggle input:checked+.toggle-slider{background:var(--blue-text);}
 .toggle input:checked+.toggle-slider:before{transform:translateX(18px);}
 @media(max-width:600px){.pipeline{flex-direction:column;}.pipeline-col{min-width:unset;}}
@@ -616,19 +616,17 @@ function toDatetimeLocal(d){if(!d)return'';const dt=new Date(d);dt.setMinutes(dt
 function fromDatetimeLocal(s){if(!s)return null;return new Date(s).toISOString();}
 
 function getPeriodBounds(offset=0,biweekly=true){
+  // Anchor to Sunday May 18, 2025 - confirmed pay period start Sunday
+  const anchor=new Date('2025-05-18T00:00:00');
   const now=new Date();
-  const days=biweekly?14:7;
-  // Anchor to Monday of current week, then offset by period
-  const day=now.getDay();
-  const diff=now.getDate()-day+(day===0?-6:1);
-  const monday=new Date(now.setDate(diff));
-  monday.setHours(0,0,0,0);
-  // For biweekly, snap to 2-week periods starting from a fixed anchor
-  const anchor=new Date('2024-01-01');
-  const totalDays=Math.floor((monday-anchor)/(86400000));
-  const periodStart=new Date(anchor.getTime()+Math.floor(totalDays/days)*days*86400000+offset*days*86400000);
-  const periodEnd=new Date(periodStart.getTime()+days*86400000-1);
-  return{start:periodStart,end:periodEnd};
+  now.setHours(0,0,0,0);
+  const diffDays=Math.floor((now-anchor)/86400000);
+  const periodNum=Math.floor(diffDays/14);
+  const start=new Date(anchor.getTime()+(periodNum+offset)*14*86400000);
+  start.setHours(0,0,0,0);
+  const end=new Date(start.getTime()+14*86400000-1);
+  end.setHours(23,59,59,999);
+  return{start,end};
 }
 function periodLabel(offset=0){
   const{start,end}=getPeriodBounds(offset);
