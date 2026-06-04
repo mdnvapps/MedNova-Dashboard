@@ -16,12 +16,12 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--gold:#C4A052;--gold-dark:#8B6B2A;--gold-light:#F0E6C8;--gold-mid:#D4B86A;--bg:#FAFAF8;--surface:#fff;--border:#E8E4DC;--text:#2C2C2A;--muted:#888780;--green-bg:#EAF3DE;--green-text:#3B6D11;--green-border:#97C459;--red-bg:#FCEBEB;--red-text:#A32D2D;--red-border:#F09595;--blue-bg:#E6F1FB;--blue-text:#0C447C;--purple-bg:#EEEDFE;--purple-text:#3C3489;--orange-bg:#FEF3E6;--orange-text:#8B4A0A;--r:10px;--rs:6px;}
 body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);min-height:100vh;}
-input,select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;background:var(--surface);color:var(--text);outline:none;transition:border .15s;}
+input,select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;background:var(--bg3);color:#FFFFFF;outline:none;transition:border .15s;}input::placeholder,textarea::placeholder{color:#4A6480;}
 input:focus,select:focus,textarea:focus{border-color:var(--gold);}
 textarea{resize:vertical;min-height:70px;}
 button{font-family:inherit;cursor:pointer;transition:all .15s;}
 .btn{background:transparent;border:1px solid var(--border);border-radius:var(--rs);padding:9px 16px;font-size:14px;color:var(--text);}
-.btn:hover{background:#F5F3EE;}.btn:active{transform:scale(.98);}
+.btn:hover{background:var(--bg3);}.btn:active{transform:scale(.98);}
 .btn-gold{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:500;}
 .btn-gold:hover{background:var(--gold-dark);border-color:var(--gold-dark);}
 .btn-sm{padding:6px 12px;font-size:13px;}
@@ -32,7 +32,7 @@ button{font-family:inherit;cursor:pointer;transition:all .15s;}
 .btn-ghost-red:hover{background:var(--red-bg);}
 .badge{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;display:inline-block;}
 .badge-in{background:var(--green-bg);color:var(--green-text);}
-.badge-out{background:#F5F3EE;color:var(--muted);}
+.badge-out{background:var(--bg3);color:var(--muted);}
 .badge-admin{background:var(--gold-light);color:var(--gold-dark);}
 .badge-edited{background:var(--blue-bg);color:var(--blue-text);font-size:10px;padding:2px 6px;}
 .badge-Lead{background:#F5F3EE;color:var(--muted);}
@@ -50,69 +50,69 @@ button{font-family:inherit;cursor:pointer;transition:all .15s;}
 .row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);}
 .row:last-child{border-bottom:none;}
 .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
-.metric{background:var(--gold-light);border-radius:var(--rs);padding:1rem;text-align:center;}
-.metric-val{font-size:24px;color:var(--gold-dark);}
-.metric-lbl{font-size:11px;color:#A07840;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
+.metric{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:1rem;text-align:center;}
+.metric-val{font-size:24px;color:var(--gold);}
+.metric-lbl{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
 .nav-logo{display:flex;align-items:center;gap:10px;}
 .nav-logo img{height:30px;}
-.nav-logo-text{font-size:14px;color:var(--gold-dark);}
+.nav-logo-text{font-size:14px;color:var(--gold);}
 .nav-logo-sub{font-size:10px;color:var(--muted);}
 .nav-right{display:flex;align-items:center;gap:8px;font-size:13px;}
-.main-tabs{display:flex;background:var(--surface);border-bottom:2px solid var(--border);}
-.main-tab{flex:1;padding:13px 8px;font-size:14px;font-weight:500;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;font-family:inherit;}
-.main-tab.active{color:var(--gold-dark);border-bottom:3px solid var(--gold);}
-.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.25rem;overflow-x:auto;}
+.main-tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--border);}
+.main-tab{flex:1;padding:13px 8px;font-size:14px;font-weight:500;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:inherit;}
+.main-tab.active{color:var(--gold);border-bottom:2px solid var(--gold);}
+.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.25rem;overflow-x:auto;background:var(--bg2);}
 .tab{flex:1;min-width:60px;padding:10px 6px;font-size:12px;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:inherit;white-space:nowrap;}
-.tab.active{color:var(--gold-dark);border-bottom:2px solid var(--gold);}
+.tab.active{color:var(--gold);border-bottom:2px solid var(--gold);}
 .main{max-width:760px;margin:0 auto;padding:1.25rem 1rem 4rem;}
 .sec-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px;}
-.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;background:radial-gradient(ellipse at top, #152840 0%, #0D1B2A 70%);}
 .login-box{width:100%;max-width:400px;}
-.login-hero{background:var(--gold-light);border:1px solid var(--gold-mid);border-radius:var(--r);padding:2rem 1.5rem;text-align:center;margin-bottom:1.25rem;}
+.login-hero{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.5rem;text-align:center;margin-bottom:1.25rem;}
 .login-hero img{height:56px;margin-bottom:10px;display:block;margin-left:auto;margin-right:auto;}
-.clock-time{font-size:44px;color:var(--gold-dark);letter-spacing:3px;font-family:'Courier New',monospace;}
+.clock-time{font-size:44px;color:var(--gold);letter-spacing:3px;font-family:'Courier New',monospace;}
 .clock-date{font-size:13px;color:var(--muted);margin-top:5px;}
 .clock-shift{font-size:14px;color:var(--gold-dark);font-weight:500;margin-top:7px;min-height:20px;}
 .ts-day{margin-bottom:1rem;}
-.ts-day-header{display:flex;justify-content:space-between;padding:8px 12px;background:var(--gold-light);border-radius:var(--rs);margin-bottom:6px;font-size:14px;}
-.ts-punch{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:4px;font-size:13px;flex-wrap:wrap;}
+.ts-day-header{display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:6px;font-size:14px;}
+.ts-punch{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:4px;font-size:13px;flex-wrap:wrap;}
 .period-nav{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;}
-.period-label{font-size:14px;font-weight:500;flex:1;text-align:center;color:var(--gold-dark);}
+.period-label{font-size:14px;font-weight:500;flex:1;text-align:center;color:var(--gold);}
 .pipeline{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;}
-.pipeline-col{min-width:148px;flex:1;background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:10px;}
+.pipeline-col{min-width:148px;flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:10px;}
 .pipeline-col-hd{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;display:flex;justify-content:space-between;}
-.pipeline-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:10px;margin-bottom:6px;cursor:pointer;}
+.pipeline-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:10px;margin-bottom:6px;cursor:pointer;}
 .pipeline-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);}
 .pipeline-card-title{font-size:13px;font-weight:500;margin-bottom:4px;}
 .pipeline-card-meta{font-size:11px;color:var(--muted);}
-.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;}
-.contact-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;}
+.contact-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.3);border-color:var(--gold);}
 .activity-item{padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;gap:10px;}
 .activity-item:last-child{border-bottom:none;}
 .activity-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:2px;}
 .task-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
 .task-row:last-child{border-bottom:none;}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:100;padding:1rem;}
-.modal{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;}
-.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:2;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:100;padding:1rem;}
+.modal{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg2);z-index:2;}
 .modal-hd h2{font-size:16px;font-weight:500;}
 .modal-bd{padding:1.25rem;}
-.modal-ft{padding:1rem 1.25rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--surface);}
-.confirm-card{background:var(--gold-light);border:1px solid var(--gold-mid);border-radius:var(--rs);padding:1.25rem;margin-top:1rem;}
-.cred-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--gold-mid);font-size:14px;}
+.modal-ft{padding:1rem 1.25rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--bg2);}
+.confirm-card{background:var(--bg3);border:1px solid var(--gold);border-radius:var(--rs);padding:1.25rem;margin-top:1rem;}
+.cred-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;}
 .cred-row:last-of-type{border-bottom:none;}
 .cred-label{color:#A07840;font-size:12px;}
 .cred-val{font-family:'Courier New',monospace;color:var(--gold-dark);font-weight:500;}
 .search-box{position:relative;margin-bottom:1rem;}
-.search-box input{padding-left:34px;}
+.search-box input{padding-left:34px;background:var(--bg3);}
 .search-box i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px;}
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);}
 .empty-state i{font-size:40px;display:block;margin-bottom:10px;opacity:.4;}
 .spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;}
 @keyframes spin{to{transform:rotate(360deg);}}
 code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;border-radius:3px;font-size:12px;}
-.toggle-wrap{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--blue-bg);border-radius:var(--rs);margin-top:12px;}
+.toggle-wrap{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border:1px solid var(--blue-border);border-radius:var(--rs);margin-top:12px;}
 .toggle-label{flex:1;}
 .toggle-label-title{font-size:13px;color:var(--blue-text);font-weight:500;}
 .toggle-label-sub{font-size:11px;color:var(--muted);}
@@ -129,29 +129,43 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
 
 <!-- LOGIN -->
 <div id="screen-login">
-<div class="login-wrap"><div class="login-box">
-  <div class="login-hero">
-    <img src="https://mednovapartners.com/images/MedNova-Logo.svg" alt="" onerror="this.style.display='none';"/>
-    <div style="font-size:22px;font-weight:500;color:var(--gold-dark);margin-bottom:4px;">MedNova Partners</div>
-    <div style="font-size:14px;color:var(--gold-dark);margin-bottom:5px;">Employee Portal</div>
-    <p style="font-size:12px;color:#A07840;">Driving Growth and Inspiring Change in Healthcare</p>
+<div class="login-wrap">
+  <div style="width:100%;max-width:520px;">
+    <!-- Top nav bar -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 0 2rem 0;">
+      <div style="font-size:20px;color:var(--text);letter-spacing:0.02em;"><span style="color:#FFFFFF;">Med</span><span style="color:var(--gold);">Nova</span> <span style="color:#4A6480;">·</span> <span style="color:#FFFFFF;">Staff</span></div>
+      <a href="https://mednovapartners.com" style="font-size:12px;color:#7A9AB5;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">← Back to site</a>
+    </div>
+    <!-- Login card -->
+    <div style="background:#0F2030;border:1px solid #1E3A55;border-radius:var(--r);padding:2.5rem 2rem;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div style="font-size:11px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">MedNova Partners</div>
+        <div style="font-size:38px;font-weight:400;color:#FFFFFF;margin-bottom:10px;font-family:'Georgia',serif;">Staff Portal</div>
+        <div style="font-size:11px;color:#8A9BB0;letter-spacing:0.15em;text-transform:uppercase;">Authorized Personnel Only</div>
+        <div style="width:100%;height:1px;background:var(--border);margin-top:1.5rem;"></div>
+      </div>
+      <div style="margin-bottom:1.25rem;">
+        <label style="font-size:11px;color:#A0B4C8;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:8px;">Employee ID</label>
+        <input id="login-id" type="text" placeholder="e.g. 001" onkeydown="if(event.key==='Enter')doLogin()" style="background:var(--bg3);border:1px solid var(--border);color:#FFFFFF;font-size:15px;padding:14px;"/>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label style="font-size:11px;color:#A0B4C8;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:8px;">Password</label>
+        <input id="login-pw" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()" style="background:var(--bg3);border:1px solid var(--border);color:#FFFFFF;font-size:15px;padding:14px;"/>
+      </div>
+      <div class="err" id="login-err" style="margin-bottom:8px;"></div>
+      <button onclick="doLogin()" style="width:100%;padding:16px;background:var(--gold);border:none;border-radius:var(--rs);font-size:13px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#fff;cursor:pointer;font-family:'Georgia',serif;transition:background .15s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'"><span id="login-btn-text">Sign in</span></button>
+      <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:1.5rem;">Need access? Contact your administrator.</p>
+    </div>
   </div>
-  <div class="card">
-    <div style="margin-bottom:1rem;"><label class="lbl"><i class="ti ti-id-badge"></i> Employee ID</label><input id="login-id" type="text" placeholder="e.g. 001" onkeydown="if(event.key==='Enter')doLogin()"/></div>
-    <div style="margin-bottom:1rem;"><label class="lbl"><i class="ti ti-lock"></i> Password</label><input id="login-pw" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
-    <div class="err" id="login-err"></div>
-    <button class="btn btn-gold btn-block" style="margin-top:8px;" onclick="doLogin()"><span id="login-btn-text">Sign in</span></button>
-  </div>
-  <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px;">Need help? Contact your manager.</p>
-</div></div>
+</div>
 </div>
 
 <!-- EMPLOYEE -->
 <div id="screen-employee" style="display:none;">
   <div class="nav">
     <div class="nav-logo">
-      <img src="https://mednovapartners.com/images/MedNova-Logo.svg" alt="MedNova" onerror="this.style.display='none';"/>
-      <div><div class="nav-logo-text">MedNova Partners</div><div class="nav-logo-sub" id="emp-nav-sub"></div></div>
+      <div style="font-size:16px;letter-spacing:0.02em;"><span style="color:#FFFFFF;">Med</span><span style="color:var(--gold);">Nova</span> <span style="color:#4A6480;">·</span> <span style="color:#FFFFFF;">Staff</span></div>
+      <div class="nav-logo-sub" id="emp-nav-sub" style="font-size:11px;color:var(--muted);"></div>
     </div>
     <div class="nav-right">
       <span class="badge" id="emp-nav-badge"></span>
@@ -293,8 +307,8 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
 <div id="screen-admin" style="display:none;">
   <div class="nav">
     <div class="nav-logo">
-      <img src="https://mednovapartners.com/images/MedNova-Logo.svg" alt="MedNova" onerror="this.style.display='none';"/>
-      <div><div class="nav-logo-text">MedNova Partners</div><div class="nav-logo-sub">Admin Portal</div></div>
+      <div style="font-size:16px;letter-spacing:0.02em;"><span style="color:#FFFFFF;">Med</span><span style="color:var(--gold);">Nova</span> <span style="color:#4A6480;">·</span> <span style="color:#FFFFFF;">Staff</span></div>
+      <div class="nav-logo-sub" style="font-size:11px;color:var(--muted);">Admin Portal</div>
     </div>
     <div class="nav-right">
       <span class="badge badge-admin"><i class="ti ti-shield" style="font-size:11px;"></i> Admin</span>
@@ -344,7 +358,7 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
           <button class="btn btn-gold" onclick="generateExport()"><i class="ti ti-download"></i> Download .csv</button>
           <div class="err" id="exp-err" style="margin-top:8px;"></div>
         </div>
-        <pre id="exp-preview" style="font-size:12px;font-family:'Courier New',monospace;color:var(--muted);white-space:pre-wrap;line-height:1.7;background:var(--bg);padding:12px;border-radius:var(--rs);border:1px solid var(--border);">Select a date range to preview.</pre>
+        <pre id="exp-preview" style="font-size:12px;font-family:'Courier New',monospace;color:var(--muted);white-space:pre-wrap;line-height:1.7;background:var(--bg2);padding:12px;border-radius:var(--rs);border:1px solid var(--border);">Select a date range to preview.</pre>
       </div>
     </div>
   </div>
