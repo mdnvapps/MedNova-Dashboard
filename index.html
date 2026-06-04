@@ -10,20 +10,35 @@
 <meta name="apple-mobile-web-app-title" content="MedNova"/>
 <meta name="theme-color" content="#C4A052"/>
 <link rel="manifest" href="manifest.json"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C4A052;--gold-dark:#8B6B2A;--gold-light:#F0E6C8;--gold-mid:#D4B86A;--bg:#FAFAF8;--surface:#fff;--border:#E8E4DC;--text:#2C2C2A;--muted:#888780;--green-bg:#EAF3DE;--green-text:#3B6D11;--green-border:#97C459;--red-bg:#FCEBEB;--red-text:#A32D2D;--red-border:#F09595;--blue-bg:#E6F1FB;--blue-text:#0C447C;--purple-bg:#EEEDFE;--purple-text:#3C3489;--orange-bg:#FEF3E6;--orange-text:#8B4A0A;--r:10px;--rs:6px;}
-body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);min-height:100vh;}
-input,select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;background:var(--bg3);color:#FFFFFF;outline:none;transition:border .15s;}input::placeholder,textarea::placeholder{color:#4A6480;}
+:root{
+  --bg:#0b0b0d;--bg2:#141417;--bg3:#191920;--bg-hover:#20202a;
+  --bg-card:#191920;--bg-elev:#141417;
+  --border:#2a2a32;--border-soft:#202028;
+  --gold:#c9a96e;--gold-dark:#a88a47;--gold-bright:#e6cd92;--gold-dim:#7d6940;
+  --gold-light:#1a1610;--gold-mid:#c9a96e;
+  --text:#f1ede4;--muted:#97928a;--muted-2:#6f6b63;
+  --green-bg:#0d1f12;--green-text:#76b285;--green-border:#1a4025;
+  --red-bg:#1f0d0d;--red-text:#bd7373;--red-border:#401a1a;
+  --blue-bg:#0d1420;--blue-text:#5BA3D9;--blue-border:#1a2840;
+  --purple-bg:#130d1f;--purple-text:#9B8FE0;
+  --orange-bg:#1f130d;--orange-text:#c9a96e;
+  --surface:#191920;--bg-hover:#20202a;
+  --r:14px;--rs:8px;
+}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+input,select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:'Manrope',system-ui,sans-serif;background:var(--bg3);color:var(--text);outline:none;transition:border .15s;}input::placeholder,textarea::placeholder{color:var(--muted-2);}select option{background:var(--bg3);color:var(--text);}
 input:focus,select:focus,textarea:focus{border-color:var(--gold);}
 textarea{resize:vertical;min-height:70px;}
-button{font-family:inherit;cursor:pointer;transition:all .15s;}
+button{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;transition:all .15s;}
 .btn{background:transparent;border:1px solid var(--border);border-radius:var(--rs);padding:9px 16px;font-size:14px;color:var(--text);}
-.btn:hover{background:var(--bg3);}.btn:active{transform:scale(.98);}
+.btn:hover{background:var(--bg-hover);}.btn:active{transform:scale(.98);}
 .btn-gold{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:500;}
-.btn-gold:hover{background:var(--gold-dark);border-color:var(--gold-dark);}
+.btn-gold:hover{background:var(--gold-dark);border-color:var(--gold);}
 .btn-sm{padding:6px 12px;font-size:13px;}
 .btn-block{width:100%;text-align:center;padding:13px;display:block;}
 .btn-in{background:var(--green-bg);border-color:var(--green-border);color:var(--green-text);font-weight:500;}
@@ -32,8 +47,8 @@ button{font-family:inherit;cursor:pointer;transition:all .15s;}
 .btn-ghost-red:hover{background:var(--red-bg);}
 .badge{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;display:inline-block;}
 .badge-in{background:var(--green-bg);color:var(--green-text);}
-.badge-out{background:var(--bg3);color:var(--muted);}
-.badge-admin{background:var(--gold-light);color:var(--gold-dark);}
+.badge-out{background:var(--bg2);color:var(--muted);}
+.badge-admin{background:var(--gold-light);color:var(--gold);}
 .badge-edited{background:var(--blue-bg);color:var(--blue-text);font-size:10px;padding:2px 6px;}
 .badge-Lead{background:#F5F3EE;color:var(--muted);}
 .badge-Contacted{background:var(--blue-bg);color:var(--blue-text);}
@@ -51,68 +66,68 @@ button{font-family:inherit;cursor:pointer;transition:all .15s;}
 .row:last-child{border-bottom:none;}
 .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
 .metric{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:1rem;text-align:center;}
-.metric-val{font-size:24px;color:var(--gold);}
-.metric-lbl{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
+.metric-val{font-size:26px;color:var(--gold-bright);font-family:'Cormorant Garamond',serif;font-weight:500;}
+.metric-lbl{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.1em;font-family:'Manrope',sans-serif;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:11px 20px;background:var(--bg-elev);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
 .nav-logo{display:flex;align-items:center;gap:10px;}
 .nav-logo img{height:30px;}
 .nav-logo-text{font-size:14px;color:var(--gold);}
 .nav-logo-sub{font-size:10px;color:var(--muted);}
 .nav-right{display:flex;align-items:center;gap:8px;font-size:13px;}
-.main-tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--border);}
-.main-tab{flex:1;padding:13px 8px;font-size:14px;font-weight:500;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:inherit;}
+.main-tabs{display:flex;background:var(--bg-elev);border-bottom:1px solid var(--border);}
+.main-tab{flex:1;padding:13px 8px;font-size:14px;font-weight:500;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:'Manrope',system-ui,sans-serif;}
 .main-tab.active{color:var(--gold);border-bottom:2px solid var(--gold);}
-.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.25rem;overflow-x:auto;background:var(--bg2);}
-.tab{flex:1;min-width:60px;padding:10px 6px;font-size:12px;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:inherit;white-space:nowrap;}
+.tab-bar{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.25rem;overflow-x:auto;background:var(--bg-elev);}
+.tab{flex:1;min-width:60px;padding:10px 6px;font-size:12px;background:transparent;border:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:'Manrope',system-ui,sans-serif;white-space:nowrap;}
 .tab.active{color:var(--gold);border-bottom:2px solid var(--gold);}
 .main{max-width:760px;margin:0 auto;padding:1.25rem 1rem 4rem;}
-.sec-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px;}
-.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;background:radial-gradient(ellipse at top, #152840 0%, #0D1B2A 70%);}
+.sec-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px;font-family:'Manrope',sans-serif;}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;background:radial-gradient(ellipse at 50% 0%, #1a1508 0%, #0b0b0d 60%);}
 .login-box{width:100%;max-width:400px;}
 .login-hero{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.5rem;text-align:center;margin-bottom:1.25rem;}
 .login-hero img{height:56px;margin-bottom:10px;display:block;margin-left:auto;margin-right:auto;}
-.clock-time{font-size:44px;color:var(--gold);letter-spacing:3px;font-family:'Courier New',monospace;}
+.clock-time{font-size:48px;color:var(--gold-bright);letter-spacing:4px;font-family:'Manrope',monospace;font-weight:300;}
 .clock-date{font-size:13px;color:var(--muted);margin-top:5px;}
-.clock-shift{font-size:14px;color:var(--gold-dark);font-weight:500;margin-top:7px;min-height:20px;}
+.clock-shift{font-size:14px;color:var(--gold);font-weight:500;margin-top:7px;min-height:20px;}
 .ts-day{margin-bottom:1rem;}
-.ts-day-header{display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:6px;font-size:14px;}
-.ts-punch{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:4px;font-size:13px;flex-wrap:wrap;}
+.ts-day-header{display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:6px;font-size:14px;}
+.ts-punch{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:4px;font-size:13px;flex-wrap:wrap;}
 .period-nav{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;}
 .period-label{font-size:14px;font-weight:500;flex:1;text-align:center;color:var(--gold);}
 .pipeline{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;}
-.pipeline-col{min-width:148px;flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:10px;}
+.pipeline-col{min-width:148px;flex:1;background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--rs);padding:10px;}
 .pipeline-col-hd{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;display:flex;justify-content:space-between;}
 .pipeline-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:10px;margin-bottom:6px;cursor:pointer;}
 .pipeline-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08);}
 .pipeline-card-title{font-size:13px;font-weight:500;margin-bottom:4px;}
 .pipeline-card-meta{font-size:11px;color:var(--muted);}
-.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;}
-.contact-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.3);border-color:var(--gold);}
+.contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--rs);padding:12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;transition:border-color .15s;}
+.contact-card:hover{border-color:var(--gold-dim);background:var(--bg-hover);}
 .activity-item{padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;display:flex;gap:10px;}
 .activity-item:last-child{border-bottom:none;}
 .activity-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:2px;}
 .task-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
 .task-row:last-child{border-bottom:none;}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:100;padding:1rem;}
-.modal{background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;}
-.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg2);z-index:2;}
+.modal{background:var(--bg-card);border-radius:var(--r);border:1px solid var(--border);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg-card);z-index:2;}
 .modal-hd h2{font-size:16px;font-weight:500;}
 .modal-bd{padding:1.25rem;}
-.modal-ft{padding:1rem 1.25rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--bg2);}
-.confirm-card{background:var(--bg3);border:1px solid var(--gold);border-radius:var(--rs);padding:1.25rem;margin-top:1rem;}
+.modal-ft{padding:1rem 1.25rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:var(--bg-card);}
+.confirm-card{background:var(--bg-elev);border:1px solid var(--gold-dim);border-radius:var(--rs);padding:1.25rem;margin-top:1rem;}
 .cred-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;}
 .cred-row:last-of-type{border-bottom:none;}
-.cred-label{color:#A07840;font-size:12px;}
-.cred-val{font-family:'Courier New',monospace;color:var(--gold-dark);font-weight:500;}
+.cred-label{color:var(--muted);font-size:12px;}
+.cred-val{font-family:'Courier New',monospace;color:var(--gold);font-weight:500;}
 .search-box{position:relative;margin-bottom:1rem;}
 .search-box input{padding-left:34px;background:var(--bg3);}
 .search-box i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px;}
-.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted-2);}
 .empty-state i{font-size:40px;display:block;margin-bottom:10px;opacity:.4;}
 .spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;}
 @keyframes spin{to{transform:rotate(360deg);}}
 code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;border-radius:3px;font-size:12px;}
-.toggle-wrap{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border:1px solid var(--blue-border);border-radius:var(--rs);margin-top:12px;}
+.toggle-wrap{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--rs);margin-top:12px;}
 .toggle-label{flex:1;}
 .toggle-label-title{font-size:13px;color:var(--blue-text);font-weight:500;}
 .toggle-label-sub{font-size:11px;color:var(--muted);}
@@ -133,27 +148,27 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
   <div style="width:100%;max-width:520px;">
     <!-- Top nav bar -->
     <div style="display:flex;justify-content:space-between;align-items:center;padding:0 0 2rem 0;">
-      <div style="font-size:20px;color:var(--text);letter-spacing:0.02em;"><span style="color:#FFFFFF;">Med</span><span style="color:var(--gold);">Nova</span> <span style="color:#4A6480;">·</span> <span style="color:#FFFFFF;">Staff</span></div>
+      <div style="font-size:20px;color:var(--text);letter-spacing:0.02em;"><span style="color:var(--text);font-family:'Cormorant Garamond',serif;font-size:18px;">Med</span><span style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;">Nova</span><span style="color:var(--muted-2);margin:0 6px;">·</span><span style="color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;letter-spacing:0.05em;">Staff</span></div>
       <a href="https://mednovapartners.com" style="font-size:12px;color:#7A9AB5;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">← Back to site</a>
     </div>
     <!-- Login card -->
-    <div style="background:#0F2030;border:1px solid #1E3A55;border-radius:var(--r);padding:2.5rem 2rem;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem 2rem;">
       <div style="text-align:center;margin-bottom:2rem;">
-        <div style="font-size:11px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">MedNova Partners</div>
-        <div style="font-size:38px;font-weight:400;color:#FFFFFF;margin-bottom:10px;font-family:'Georgia',serif;">Staff Portal</div>
+        <div style="font-size:11px;color:var(--gold-dim);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;font-family:'Manrope',sans-serif;">MedNova Partners</div>
+        <div style="font-size:38px;font-weight:400;color:#FFFFFF;margin-bottom:10px;font-family:'Cormorant Garamond',Georgia,serif;">Staff Portal</div>
         <div style="font-size:11px;color:#8A9BB0;letter-spacing:0.15em;text-transform:uppercase;">Authorized Personnel Only</div>
         <div style="width:100%;height:1px;background:var(--border);margin-top:1.5rem;"></div>
       </div>
       <div style="margin-bottom:1.25rem;">
-        <label style="font-size:11px;color:#A0B4C8;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:8px;">Employee ID</label>
-        <input id="login-id" type="text" placeholder="e.g. 001" onkeydown="if(event.key==='Enter')doLogin()" style="background:var(--bg3);border:1px solid var(--border);color:#FFFFFF;font-size:15px;padding:14px;"/>
+        <label style="font-size:11px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:8px;font-family:'Manrope',sans-serif;">Employee ID</label>
+        <input id="login-id" type="text" placeholder="e.g. 001" onkeydown="if(event.key==='Enter')doLogin()" style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:15px;padding:14px;border-radius:var(--rs);"/>
       </div>
       <div style="margin-bottom:1.5rem;">
-        <label style="font-size:11px;color:#A0B4C8;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:8px;">Password</label>
-        <input id="login-pw" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()" style="background:var(--bg3);border:1px solid var(--border);color:#FFFFFF;font-size:15px;padding:14px;"/>
+        <label style="font-size:11px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:8px;font-family:'Manrope',sans-serif;">Password</label>
+        <input id="login-pw" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()" style="background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:15px;padding:14px;border-radius:var(--rs);"/>
       </div>
       <div class="err" id="login-err" style="margin-bottom:8px;"></div>
-      <button onclick="doLogin()" style="width:100%;padding:16px;background:var(--gold);border:none;border-radius:var(--rs);font-size:13px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#fff;cursor:pointer;font-family:'Georgia',serif;transition:background .15s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'"><span id="login-btn-text">Sign in</span></button>
+      <button onclick="doLogin()" style="width:100%;padding:16px;background:var(--gold);border:none;border-radius:var(--rs);font-size:13px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#fff;cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;transition:background .15s;" onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'"><span id="login-btn-text">Sign in</span></button>
       <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:1.5rem;">Need access? Contact your administrator.</p>
     </div>
   </div>
@@ -164,7 +179,7 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
 <div id="screen-employee" style="display:none;">
   <div class="nav">
     <div class="nav-logo">
-      <div style="font-size:16px;letter-spacing:0.02em;"><span style="color:#FFFFFF;">Med</span><span style="color:var(--gold);">Nova</span> <span style="color:#4A6480;">·</span> <span style="color:#FFFFFF;">Staff</span></div>
+      <div style="font-size:16px;letter-spacing:0.02em;"><span style="color:var(--text);font-family:'Cormorant Garamond',serif;font-size:18px;">Med</span><span style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;">Nova</span><span style="color:var(--muted-2);margin:0 6px;">·</span><span style="color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;letter-spacing:0.05em;">Staff</span></div>
       <div class="nav-logo-sub" id="emp-nav-sub" style="font-size:11px;color:var(--muted);"></div>
     </div>
     <div class="nav-right">
@@ -307,7 +322,7 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
 <div id="screen-admin" style="display:none;">
   <div class="nav">
     <div class="nav-logo">
-      <div style="font-size:16px;letter-spacing:0.02em;"><span style="color:#FFFFFF;">Med</span><span style="color:var(--gold);">Nova</span> <span style="color:#4A6480;">·</span> <span style="color:#FFFFFF;">Staff</span></div>
+      <div style="font-size:16px;letter-spacing:0.02em;"><span style="color:var(--text);font-family:'Cormorant Garamond',serif;font-size:18px;">Med</span><span style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:18px;">Nova</span><span style="color:var(--muted-2);margin:0 6px;">·</span><span style="color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;letter-spacing:0.05em;">Staff</span></div>
       <div class="nav-logo-sub" style="font-size:11px;color:var(--muted);">Admin Portal</div>
     </div>
     <div class="nav-right">
@@ -567,7 +582,7 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
     <div style="margin-bottom:12px;"><label class="lbl">Password (blank = auto-generate)</label><div style="display:flex;gap:8px;"><input id="m-pw" type="text" style="flex:1;"/><button class="btn btn-sm" onclick="document.getElementById('m-pw').value=genPw()"><i class="ti ti-refresh"></i></button></div></div>
     <div class="err" id="modal-err"></div>
     <div class="confirm-card" id="confirm-card" style="display:none;">
-      <div style="font-size:13px;font-weight:500;color:var(--gold-dark);margin-bottom:10px;"><i class="ti ti-circle-check"></i> User created:</div>
+      <div style="font-size:13px;font-weight:500;color:var(--gold);margin-bottom:10px;"><i class="ti ti-circle-check"></i> User created:</div>
       <div class="cred-row"><span class="cred-label">Name</span><span class="cred-val" id="cc-name"></span></div>
       <div class="cred-row"><span class="cred-label">Employee ID</span><span class="cred-val" id="cc-id"></span></div>
       <div class="cred-row"><span class="cred-label">Password</span><span class="cred-val" id="cc-pw"></span></div>
@@ -584,6 +599,12 @@ code{font-family:'Courier New',monospace;background:#F5F3EE;padding:1px 5px;bord
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;"><div><label class="lbl">First name</label><input id="eu-fname" type="text"/></div><div><label class="lbl">Last name</label><input id="eu-lname" type="text"/></div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;"><div><label class="lbl">Employee ID</label><input id="eu-eid" type="text"/></div><div><label class="lbl">RunPayroll #</label><input id="eu-rp" type="text"/></div></div>
     <div><label class="lbl">New password (blank = keep current)</label><div style="display:flex;gap:8px;"><input id="eu-pw" type="text" style="flex:1;"/><button class="btn btn-sm" onclick="document.getElementById('eu-pw').value=genPw()"><i class="ti ti-refresh"></i></button></div></div>
+    <div style="margin-top:12px;"><label class="lbl">Access level</label>
+      <select id="eu-role">
+        <option value="employee">Employee — clock in/out, own CRM only</option>
+        <option value="admin">Admin — view all timesheets &amp; full CRM</option>
+      </select>
+    </div>
     <div class="err" id="eu-err" style="margin-top:8px;"></div>
   </div>
   <div class="modal-ft"><button class="btn btn-ghost-red btn-sm" onclick="deactivateUser()" style="margin-right:auto;"><i class="ti ti-user-off"></i> Deactivate</button><button class="btn" onclick="closeModal('edit-user-modal')">Cancel</button><button class="btn btn-gold" onclick="saveEditUser()">Save</button></div>
@@ -696,7 +717,7 @@ async function loadTeamTab(type){
   } else if(type==='companies'){
     const{data}=await sb.from('companies').select('*,employees(first_name,last_name)').eq('shared',true).neq('owner_id',eid).order('name');
     if(!data||!data.length){el.innerHTML='<div class="empty-state"><i class="ti ti-building"></i>No shared companies yet.</div>';return;}
-    el.innerHTML=data.map(c=>`<div class="contact-card"><div class="avatar" style="background:var(--gold-light);color:var(--gold-dark);font-size:18px;width:40px;height:40px;"><i class="ti ti-building"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${c.name}</div><div style="font-size:12px;color:var(--muted);">${[c.type,c.city,c.state].filter(Boolean).join(' · ')}</div></div><div style="text-align:right;font-size:11px;color:var(--muted);"><span class="badge" style="background:var(--blue-bg);color:var(--blue-text);font-size:10px;"><i class="ti ti-users" style="font-size:9px;"></i> Shared</span><div style="margin-top:4px;">${c.employees?c.employees.first_name+' '+c.employees.last_name:''}</div></div></div>`).join('');
+    el.innerHTML=data.map(c=>`<div class="contact-card"><div class="avatar" style="background:var(--gold-light);color:var(--gold);font-size:18px;width:40px;height:40px;"><i class="ti ti-building"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${c.name}</div><div style="font-size:12px;color:var(--muted);">${[c.type,c.city,c.state].filter(Boolean).join(' · ')}</div></div><div style="text-align:right;font-size:11px;color:var(--muted);"><span class="badge" style="background:var(--blue-bg);color:var(--blue-text);font-size:10px;"><i class="ti ti-users" style="font-size:9px;"></i> Shared</span><div style="margin-top:4px;">${c.employees?c.employees.first_name+' '+c.employees.last_name:''}</div></div></div>`).join('');
   } else if(type==='deals'){
     const{data}=await sb.from('deals').select('*,contacts(first_name,last_name),employees(first_name,last_name)').eq('shared',true).neq('owner_id',eid).order('created_at',{ascending:false});
     if(!data||!data.length){el.innerHTML='<div class="empty-state"><i class="ti ti-trending-up"></i>No shared deals yet.</div>';return;}
@@ -704,7 +725,7 @@ async function loadTeamTab(type){
   } else if(type==='meetings'){
     const{data}=await sb.from('meetings').select('*,contacts(first_name,last_name),employees(first_name,last_name)').eq('shared',true).neq('owner_id',eid).order('meeting_date',{ascending:false});
     if(!data||!data.length){el.innerHTML='<div class="empty-state"><i class="ti ti-calendar-event"></i>No shared meetings yet.</div>';return;}
-    el.innerHTML=data.map(m=>`<div class="contact-card"><div style="width:44px;text-align:center;flex-shrink:0;"><div style="font-size:18px;font-weight:500;color:var(--gold-dark);">${new Date(m.meeting_date).getDate()}</div><div style="font-size:10px;color:var(--muted);">${new Date(m.meeting_date).toLocaleDateString([],{month:'short'})}</div></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${m.title}</div><div style="font-size:12px;color:var(--muted);">${fmtTime(m.meeting_date)}${m.contacts?' · '+m.contacts.first_name+' '+m.contacts.last_name:''}</div></div><div style="text-align:right;font-size:11px;color:var(--muted);"><span class="badge" style="background:var(--blue-bg);color:var(--blue-text);font-size:10px;"><i class="ti ti-users" style="font-size:9px;"></i> Shared</span><div style="margin-top:4px;">${m.employees?m.employees.first_name+' '+m.employees.last_name:''}</div></div></div>`).join('');
+    el.innerHTML=data.map(m=>`<div class="contact-card"><div style="width:44px;text-align:center;flex-shrink:0;"><div style="font-size:18px;font-weight:500;color:var(--gold);">${new Date(m.meeting_date).getDate()}</div><div style="font-size:10px;color:var(--muted);">${new Date(m.meeting_date).toLocaleDateString([],{month:'short'})}</div></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${m.title}</div><div style="font-size:12px;color:var(--muted);">${fmtTime(m.meeting_date)}${m.contacts?' · '+m.contacts.first_name+' '+m.contacts.last_name:''}</div></div><div style="text-align:right;font-size:11px;color:var(--muted);"><span class="badge" style="background:var(--blue-bg);color:var(--blue-text);font-size:10px;"><i class="ti ti-users" style="font-size:9px;"></i> Shared</span><div style="margin-top:4px;">${m.employees?m.employees.first_name+' '+m.employees.last_name:''}</div></div></div>`).join('');
   }
 }
 function openModal(id){const el=document.getElementById(id);if(el)el.style.display='flex';}
@@ -1081,6 +1102,7 @@ async function openEditUser(eid){
   document.getElementById('eu-eid').value=data.employee_id;
   document.getElementById('eu-rp').value=data.runpayroll_num||'';
   document.getElementById('eu-pw').value='';
+  document.getElementById('eu-role').value=data.role||'employee';
   document.getElementById('eu-err').textContent='';
   openModal('edit-user-modal');
 }
@@ -1090,9 +1112,10 @@ async function saveEditUser(){
   const eid=document.getElementById('eu-eid').value.trim().toUpperCase();
   const rp=document.getElementById('eu-rp').value.trim();
   const pw=document.getElementById('eu-pw').value.trim();
+  const role=document.getElementById('eu-role').value;
   const err=document.getElementById('eu-err');
   if(!fn||!ln||!eid){err.textContent='Name and ID are required.';return;}
-  const updates={first_name:fn,last_name:ln,employee_id:eid,runpayroll_num:rp};
+  const updates={first_name:fn,last_name:ln,employee_id:eid,runpayroll_num:rp,role};
   if(pw)updates.password_hash=pw;
   const{error}=await sb.from('employees').update(updates).eq('employee_id',editingUserId);
   if(error){err.textContent='Error: '+error.message;return;}
@@ -1179,7 +1202,7 @@ function filterCompanies(){const q=document.getElementById('company-search').val
 function renderCompanies(companies){
   const el=document.getElementById('companies-list');
   if(!companies.length){el.innerHTML='<div class="empty-state"><i class="ti ti-building"></i>No companies yet. Click Add to create one.</div>';return;}
-  el.innerHTML=companies.map(c=>`<div class="contact-card" onclick="openEditCompany('${c.id}')"><div class="avatar" style="background:var(--gold-light);color:var(--gold-dark);font-size:18px;width:40px;height:40px;"><i class="ti ti-building"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${c.name}</div><div style="font-size:12px;color:var(--muted);">${[c.type,c.city,c.state].filter(Boolean).join(' · ')}</div>${c.phone?`<div style="font-size:12px;color:var(--muted);"><a href="tel:${c.phone}" onclick="event.stopPropagation()">${c.phone}</a></div>`:''}</div>${c.industry?`<span class="badge" style="background:var(--blue-bg);color:var(--blue-text);align-self:flex-start;font-size:10px;">${c.industry}</span>`:''}</div>`).join('');
+  el.innerHTML=companies.map(c=>`<div class="contact-card" onclick="openEditCompany('${c.id}')"><div class="avatar" style="background:var(--gold-light);color:var(--gold);font-size:18px;width:40px;height:40px;"><i class="ti ti-building"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${c.name}</div><div style="font-size:12px;color:var(--muted);">${[c.type,c.city,c.state].filter(Boolean).join(' · ')}</div>${c.phone?`<div style="font-size:12px;color:var(--muted);"><a href="tel:${c.phone}" onclick="event.stopPropagation()">${c.phone}</a></div>`:''}</div>${c.industry?`<span class="badge" style="background:var(--blue-bg);color:var(--blue-text);align-self:flex-start;font-size:10px;">${c.industry}</span>`:''}</div>`).join('');
 }
 function resetCompanyForm(){editingCompanyId=null;['co-name','co-address','co-city','co-state','co-zip','co-phone','co-website','co-notes'].forEach(id=>document.getElementById(id).value='');document.getElementById('co-type').value='';document.getElementById('co-industry').value='';document.getElementById('co-err').textContent='';document.getElementById('co-delete-btn').style.display='none';setSharedToggle('co-shared','co-shared-track',false);}
 async function openEditCompany(id){const{data}=await sb.from('companies').select('*').eq('id',id).single();if(!data)return;editingCompanyId=id;document.getElementById('co-name').value=data.name;document.getElementById('co-type').value=data.type||'';document.getElementById('co-industry').value=data.industry||'';document.getElementById('co-address').value=data.address||'';document.getElementById('co-city').value=data.city||'';document.getElementById('co-state').value=data.state||'';document.getElementById('co-zip').value=data.zip||'';document.getElementById('co-phone').value=data.phone||'';document.getElementById('co-website').value=data.website||'';document.getElementById('co-notes').value=data.notes||'';document.getElementById('co-delete-btn').style.display='inline-flex';setSharedToggle('co-shared','co-shared-track',data.shared||false);openModal('company-modal');}
@@ -1196,7 +1219,7 @@ function renderMeetings(meetings){
   const el=document.getElementById('meetings-list');
   if(!meetings.length){el.innerHTML='<div class="empty-state"><i class="ti ti-calendar-event"></i>No meetings yet.</div>';return;}
   const now=new Date();const upcoming=meetings.filter(m=>new Date(m.meeting_date)>=now);const past=meetings.filter(m=>new Date(m.meeting_date)<now);
-  const renderGroup=(title,items)=>items.length?`<div style="font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:1rem 0 8px;">${title}</div>`+items.map(m=>`<div class="contact-card" onclick="openEditMeeting('${m.id}')"><div style="width:44px;text-align:center;flex-shrink:0;"><div style="font-size:18px;font-weight:500;color:var(--gold-dark);">${new Date(m.meeting_date).getDate()}</div><div style="font-size:10px;color:var(--muted);">${new Date(m.meeting_date).toLocaleDateString([],{month:'short'})}</div></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${m.title}</div><div style="font-size:12px;color:var(--muted);">${fmtTime(m.meeting_date)} · ${(m.meeting_type||'').replace('_',' ')}${m.contacts?' · '+m.contacts.first_name+' '+m.contacts.last_name:''}</div>${m.location?`<div style="font-size:12px;color:var(--muted);">${m.location}</div>`:''}</div><button class="btn btn-sm" style="font-size:11px;" onclick="event.stopPropagation();addToCalendarById('${m.id}')"><i class="ti ti-calendar-plus"></i></button></div>`).join(''):'';
+  const renderGroup=(title,items)=>items.length?`<div style="font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:1rem 0 8px;">${title}</div>`+items.map(m=>`<div class="contact-card" onclick="openEditMeeting('${m.id}')"><div style="width:44px;text-align:center;flex-shrink:0;"><div style="font-size:18px;font-weight:500;color:var(--gold);">${new Date(m.meeting_date).getDate()}</div><div style="font-size:10px;color:var(--muted);">${new Date(m.meeting_date).toLocaleDateString([],{month:'short'})}</div></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${m.title}</div><div style="font-size:12px;color:var(--muted);">${fmtTime(m.meeting_date)} · ${(m.meeting_type||'').replace('_',' ')}${m.contacts?' · '+m.contacts.first_name+' '+m.contacts.last_name:''}</div>${m.location?`<div style="font-size:12px;color:var(--muted);">${m.location}</div>`:''}</div><button class="btn btn-sm" style="font-size:11px;" onclick="event.stopPropagation();addToCalendarById('${m.id}')"><i class="ti ti-calendar-plus"></i></button></div>`).join(''):'';
   el.innerHTML=renderGroup('Upcoming',upcoming)+renderGroup('Past',past);
 }
 function resetMeetingForm(){editingMeetingId=null;currentCalMeeting=null;['mt-title','mt-date','mt-location','mt-notes','mt-outcome'].forEach(id=>document.getElementById(id).value='');document.getElementById('mt-duration').value='60';document.getElementById('mt-type').value='in_person';document.getElementById('mt-contact').value='';document.getElementById('mt-company').value='';document.getElementById('mt-deal').value='';document.getElementById('mt-err').textContent='';document.getElementById('mt-delete-btn').style.display='none';document.getElementById('mt-cal-btn').style.display='none';}
@@ -1311,7 +1334,7 @@ async function loadAdminMeetings(){
   const emp=document.getElementById('adm-meeting-emp-filter').value;
   let q=sb.from('meetings').select('*,contacts(first_name,last_name),employees(first_name,last_name)').order('meeting_date',{ascending:false});if(emp)q=q.eq('owner_id',emp);
   const{data}=await q;
-  document.getElementById('adm-meetings-list').innerHTML=data&&data.length?data.map(m=>`<div class="contact-card"><div style="width:44px;text-align:center;flex-shrink:0;"><div style="font-size:18px;font-weight:500;color:var(--gold-dark);">${new Date(m.meeting_date).getDate()}</div><div style="font-size:10px;color:var(--muted);">${new Date(m.meeting_date).toLocaleDateString([],{month:'short'})}</div></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${m.title}</div><div style="font-size:12px;color:var(--muted);">${fmtTime(m.meeting_date)}${m.contacts?' · '+m.contacts.first_name+' '+m.contacts.last_name:''}</div></div><div style="font-size:11px;color:var(--muted);">${m.employees?m.employees.first_name+' '+m.employees.last_name:m.owner_id}</div></div>`).join(''):'<div class="empty-state"><i class="ti ti-calendar-event"></i>No meetings.</div>';
+  document.getElementById('adm-meetings-list').innerHTML=data&&data.length?data.map(m=>`<div class="contact-card"><div style="width:44px;text-align:center;flex-shrink:0;"><div style="font-size:18px;font-weight:500;color:var(--gold);">${new Date(m.meeting_date).getDate()}</div><div style="font-size:10px;color:var(--muted);">${new Date(m.meeting_date).toLocaleDateString([],{month:'short'})}</div></div><div style="flex:1;"><div style="font-size:14px;font-weight:500;">${m.title}</div><div style="font-size:12px;color:var(--muted);">${fmtTime(m.meeting_date)}${m.contacts?' · '+m.contacts.first_name+' '+m.contacts.last_name:''}</div></div><div style="font-size:11px;color:var(--muted);">${m.employees?m.employees.first_name+' '+m.employees.last_name:m.owner_id}</div></div>`).join(''):'<div class="empty-state"><i class="ti ti-calendar-event"></i>No meetings.</div>';
 }
 async function loadAdminActivity(){
   const emp=document.getElementById('adm-activity-emp-filter').value;
